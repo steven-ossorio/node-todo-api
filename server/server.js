@@ -68,7 +68,7 @@ app.delete('/todos/:id', (req, res) => {
   });
 });
 
-app.update('/todos/:id', (req, res) => {
+app.patch('/todos/:id', (req, res) => {
   let id = req.params.id;
   let body = _.pick(req.body, ['text', 'completed']);
 
@@ -94,6 +94,20 @@ app.update('/todos/:id', (req, res) => {
     res.status(400).send();
   });
 });
+
+// POST /users
+
+app.post('/users', (req, res) => {
+  let body = _.pick(req.body, ['email', 'password']);
+  let user = new User(body);
+
+  user.save().then( user => {
+    res.send(user);
+  }).catch( e => {
+    res.status(400).send(e);
+  });
+});
+
 
 app.listen(port, () => {
   console.log(`Started on Port ${port}`);
