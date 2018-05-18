@@ -1,14 +1,14 @@
-const _ = require('lodash');
-const { ObjectID } = require('mongodb');
-let express = require('express');
-let bodyParser = require('body-parser');
+const _               = require('lodash');
+const { ObjectID }    = require('mongodb');
+let express           = require('express');
+let bodyParser        = require('body-parser');
 
-const port = process.env.PORT || 3000;
+const port            = process.env.PORT || 3000;
 
-let { mongoose } = require('./db/mongoose');
-let { Todo } = require('./models/todo');
-let { User } = require('./models/user');
-let { authenticate } = require('./middleware/authenticate');
+let { mongoose }      = require('./db/mongoose');
+let { Todo }          = require('./models/todo');
+let { User }          = require('./models/user');
+let { authenticate }  = require('./middleware/authenticate');
 
 let app = express();
 
